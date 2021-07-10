@@ -1,0 +1,19 @@
+<section class="todo-list">
+  <header class="todo-list__header">
+    <div>
+      <div class="todo-list__day">
+        <strong>{{ dataObj | date : 'EEEE' }},</strong> {{ dataObj | date : 'd' }}
+      </div>
+      <span class="todo-list--gray-text">{{ dataObj | date: 'MMMM' }}</span>
+    </div>
+    <div>
+      <div class="todo-list__tasks todo-list--gray-text">
+        <strong>{{ taskCounter }}</strong> Tasks
+      </div>
+    </div>
+    <button type="button" class="todo-list__add-btn">+</button>
+  </header>
+  <body class="todo-list__body">
+    <app-todo-list-item></app-todo-list-item>
+  </body>
+</section>

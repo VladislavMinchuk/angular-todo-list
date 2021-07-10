@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+
+@import 'assets/vendors/include-media';
+@import 'assets/vendors/normalize';
+@import 'assets/base/variables';
+
+.container {
+  max-width: 1100px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
