@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import ListItem from 'src/interfaces/ListItem';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -6,8 +7,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./todo-list-item.component.scss']
 })
 export class TodoListItemComponent {
-  @Input() itemText: String = '';
-  @Input() itemDate: String = '';
-  @Input() isChecked: Boolean = false;
-  @Output() checkItem = new EventEmitter<number>();
+  @Input() listItem!: ListItem;
+  @Output() doneItem = new EventEmitter<number>();
+
+  checkItem (id: number) {
+    this.doneItem.emit(id);
+  }
 }

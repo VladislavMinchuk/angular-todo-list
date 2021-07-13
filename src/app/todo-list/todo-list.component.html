@@ -14,6 +14,10 @@
     <button type="button" class="todo-list__add-btn">+</button>
   </header>
   <body class="todo-list__body">
-    <app-todo-list-item></app-todo-list-item>
+    <app-todo-list-item
+      *ngFor="let item of toDoList"
+      [listItem]="item"
+      (doneItem)="checkItem($event)"
+    ></app-todo-list-item>
   </body>
 </section>

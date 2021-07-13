@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import ListItem from 'src/interfaces/ListItem';
 
 @Component({
   selector: 'todo-list',
@@ -7,5 +8,17 @@ import { Component } from '@angular/core';
 })
 export class TodoListComponent {
   dataObj = new Date();
-  taskCounter: Number = 0;
+  taskCounter: number = 0;
+  toDoList: ListItem[] = [{
+    id: 1,
+    text: 'Should create To do list app',
+    date: '12:00',
+    isDone: false
+  }];
+
+  checkItem(itemId: number) {
+    this.toDoList.forEach((item) => {
+      if (item.id === itemId) item.isDone = !item.isDone;
+    })
+  }
 }
