@@ -11,7 +11,27 @@
         <strong>{{ taskCounter }}</strong> Tasks
       </div>
     </div>
-    <button type="button" class="todo-list__add-btn">+</button>
+    <button type="button" class="todo-list__add-btn" (click)="triggerModal(modalData)">+</button>
+    <ng-template #modalData let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add task</h4>
+        <button type="button" class="close btn btn-outline-primary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (submit)="addItem(modalData)">
+          <div class="mb-3">
+            <label for="task" class="form-label">New task</label>
+            <input type="text" name="task" id="task" class="form-control"/>
+          </div>
+          <div class="d-flex flex-column flex-md-row justify-content-md-between">
+            <button type="button" class="btn btn-danger order-2 order-md-1" (click)="modal.close('Save click')">Close</button>
+            <button type="submit" class="btn btn-success order-1 order-md-2 mb-2 mb-md-0">Add</button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
   </header>
   <body class="todo-list__body">
     <app-todo-list-item

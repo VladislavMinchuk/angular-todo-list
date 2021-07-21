@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import ListItem from 'src/interfaces/ListItem';
 
 @Component({
@@ -7,6 +8,9 @@ import ListItem from 'src/interfaces/ListItem';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent {
+  closeModal!: string;
+
+  constructor(private modalService: NgbModal) {}
   dataObj = new Date();
   taskCounter: number = 0;
   toDoList: ListItem[] = [{
@@ -20,5 +24,13 @@ export class TodoListComponent {
     this.toDoList.forEach((item) => {
       if (item.id === itemId) item.isDone = !item.isDone;
     })
+  }
+
+  triggerModal(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+  }
+
+  addItem(modal: any) {
+    console.log('addItem');
   }
 }
