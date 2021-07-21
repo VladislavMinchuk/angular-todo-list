@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import ListItem from 'src/interfaces/ListItem';
+import TaskForm from 'src/interfaces/TaskForm';
 
 @Component({
   selector: 'todo-list',
@@ -12,13 +13,16 @@ export class TodoListComponent {
 
   constructor(private modalService: NgbModal) {}
   dataObj = new Date();
-  taskCounter: number = 0;
   toDoList: ListItem[] = [{
     id: 1,
     text: 'Should create To do list app',
-    date: '12:00',
+    date: new Date(),
     isDone: false
   }];
+
+  get taskCounter(): number {
+    return this.toDoList.length;
+  };
 
   checkItem(itemId: number) {
     this.toDoList.forEach((item) => {
@@ -30,7 +34,14 @@ export class TodoListComponent {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
   }
 
-  addItem(modal: any) {
-    console.log('addItem');
+  addItem(form: TaskForm) {
+    let lastID = this.toDoList[this.toDoList.length - 1].id;
+
+    this.toDoList.push({
+      id: ++lastID,
+      text: form.task,
+      date: new Date(),
+      isDone: false
+    });
   }
 }
