@@ -8,9 +8,9 @@ import ListItem from 'src/interfaces/ListItem';
 })
 export class TodoListItemComponent {
   @Input() listItem!: ListItem;
-  @Output() doneItem = new EventEmitter<number>();
+  @Output() doneItem = new EventEmitter<ListItem>();
 
-  checkItem (id: number) {
-    this.doneItem.emit(id);
+  checkItem () {
+    this.doneItem.emit(this.listItem);
   }
 }

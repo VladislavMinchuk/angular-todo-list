@@ -1,5 +1,5 @@
 <div class="list-item" [class]="{'list-item--done': listItem.isDone}">
-  <button type="button" class="list-item__check-btn" (click)="checkItem(listItem.id)"></button>
+  <button type="button" class="list-item__check-btn" (click)="checkItem()"></button>
   <span class="list-item__text">{{ listItem.text }}</span>
   <span class="list-item__date">{{ listItem.date | date : 'hh:m a' }}</span>
 </div>

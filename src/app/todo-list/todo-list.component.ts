@@ -24,10 +24,8 @@ export class TodoListComponent {
     return this.toDoList.length;
   };
 
-  checkItem(itemId: number) {
-    this.toDoList.forEach((item) => {
-      if (item.id === itemId) item.isDone = !item.isDone;
-    })
+  checkItem(listItem: ListItem) {
+    listItem.isDone = !listItem.isDone;
   }
 
   triggerModal(content: any) {
