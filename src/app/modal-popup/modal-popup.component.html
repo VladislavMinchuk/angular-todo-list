@@ -1,0 +1,12 @@
+<div class="modal-popup" [class.active]="isOpen">
+  <div class="modal-popup__overlay" (click)="close()"></div>
+  <div class="modal-popup__wrapper">
+    <div class="modal-popup__header">
+      <p class="modal-popup__title">{{title}}</p>
+      <button type="button" class="modal-popup__close-btn" (click)="close()">x</button>
+    </div>
+    <div class="modal-popup__main">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

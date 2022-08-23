@@ -5,16 +5,51 @@
   margin: 0 auto;
   border-radius: 8px;
   background-color: $gray-light;
+  box-shadow: 5px 6px 14px -6px rgba($black, .2);
+  overflow: hidden;
 
-  &__header,
-  &__body {
-    padding: 15px 20px;
+  &__header {
+    padding: 22px 20px;
   }
 
   &__header {
+    position: relative;
     border-bottom: 1px solid $gray-light3;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+  }
+
+  &__add-btn {
+    position: absolute;
+    right: 20px;
+    bottom: -20px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding: 0 0 2px;
+    background-color: $red;
+    color: $white;
+    border: none;
+    z-index: 1;
+    transition: background-color .2s;
+
+    &:hover {
+      background-color: rgba($red, .8);
+    }
   }
   
   &__body {
+    background-color: $white;
+  }
+
+  &__day {
+    font-size: 26px;
+    color: $blue;
   }
 }

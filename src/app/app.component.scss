@@ -1,0 +1,9 @@
+@import '~src/assets/vendors/include-media';
+
+.main-wrapper {
+  padding: 40px 0;
+
+  @include media('>=desktop') {
+    padding: 100px 0;
+  }
+}

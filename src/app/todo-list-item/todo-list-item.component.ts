@@ -9,8 +9,13 @@ import ListItem from 'src/interfaces/ListItem';
 export class TodoListItemComponent {
   @Input() listItem!: ListItem;
   @Output() doneItem = new EventEmitter<ListItem>();
+  @Output() removeItem = new EventEmitter<ListItem>();
 
   checkItem () {
     this.doneItem.emit(this.listItem);
+  }
+
+  remove () {
+    this.removeItem.emit(this.listItem);
   }
 }

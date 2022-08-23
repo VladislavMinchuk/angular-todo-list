@@ -2,4 +2,5 @@
   <button type="button" class="list-item__check-btn" (click)="checkItem()"></button>
   <span class="list-item__text">{{ listItem.text }}</span>
   <span class="list-item__date">{{ listItem.date | date : 'hh:m a' }}</span>
+  <button type="button" class="list-item__remove-btn" (click)="remove()">x</button>
 </div>

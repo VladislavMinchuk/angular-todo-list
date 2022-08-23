@@ -4,31 +4,26 @@
       <div class="todo-list__day">
         <strong>{{ dataObj | date : 'EEEE' }},</strong> {{ dataObj | date : 'd' }}
       </div>
-      <span class="todo-list--gray-text">{{ dataObj | date: 'MMMM' }}</span>
+      <span class="gray-text">{{ dataObj | date: 'MMMM' }}</span>
     </div>
     <div>
-      <div class="todo-list__tasks todo-list--gray-text">
+      <div class="todo-list__tasks gray-text">
         <strong>{{ taskCounter }}</strong> Tasks
       </div>
     </div>
-    <button type="button" class="todo-list__add-btn" (click)="triggerModal(modalData)">+</button>
-    <ng-template #modalData let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Add task</h4>
-        <button type="button" class="close btn btn-outline-primary" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <app-task-form (onSubmit)="addItem($event); modal.close()" (onClose)="modal.close()"></app-task-form>
-      </div>
-    </ng-template>
+    <button type="button" class="todo-list__add-btn" (click)="modal.open()">+</button>
   </header>
   <body class="todo-list__body">
     <app-todo-list-item
       *ngFor="let item of toDoList"
       [listItem]="item"
       (doneItem)="checkItem($event)"
+      (removeItem)="removeItem($event)"
     ></app-todo-list-item>
+    <p *ngIf="toDoList.length < 1">Have no tasks</p>
   </body>
 </section>
+
+<app-modal-popup #modal [title]="'New task'">
+  <app-task-form (onSubmit)="addItem($event); modal.close()" (onClose)="modal.close()"></app-task-form>
+</app-modal-popup>

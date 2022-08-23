@@ -1,0 +1,45 @@
+@import '~src/assets/base/variables';
+@import '~src/assets/vendors/include-media';
+
+.list-item {
+  padding: 20px 10px;
+  border-bottom: 1px solid $gray-light3;
+  display: flex;
+  align-items: center;
+  color: $black-light2;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @include media('>=desktop') {
+    padding: 30px 20px;
+  }
+
+  &__date {
+    font-size: 14px;
+    color: $gray;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0 5px;
+  }
+
+  &__remove-btn {
+    margin-left: 14px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    padding: 0 0 3px;
+    transition: background-color .2s;
+    width: 22px;
+    height: 22px;
+
+    &:hover {
+      background-color: rgba($gray, .2);
+    }
+  }
+
+  &__text {
+    line-height: 2;
+  }
+}

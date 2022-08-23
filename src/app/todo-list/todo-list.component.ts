@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import ListItem from 'src/interfaces/ListItem';
 import TaskForm from 'src/interfaces/TaskForm';
+import { ModalPopupComponent } from '../modal-popup/modal-popup.component';
 
 @Component({
   selector: 'todo-list',
@@ -9,9 +9,9 @@ import TaskForm from 'src/interfaces/TaskForm';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent {
-  closeModal!: string;
+  
+  constructor() {}
 
-  constructor(private modalService: NgbModal) {}
   dataObj = new Date();
   toDoList: ListItem[] = [{
     id: 1,
@@ -28,12 +28,8 @@ export class TodoListComponent {
     listItem.isDone = !listItem.isDone;
   }
 
-  triggerModal(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
-  }
-
   addItem(form: TaskForm) {
-    let lastID = this.toDoList[this.toDoList.length - 1].id;
+    let lastID = this.toDoList[this.toDoList.length - 1]?.id || 0;
 
     this.toDoList.push({
       id: ++lastID,
@@ -41,5 +37,9 @@ export class TodoListComponent {
       date: new Date(),
       isDone: false
     });
+  }
+
+  removeItem(listItem: ListItem) {
+    this.toDoList = this.toDoList.filter(item => item.id !== listItem.id);
   }
 }
