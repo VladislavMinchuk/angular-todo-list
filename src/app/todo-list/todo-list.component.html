@@ -20,7 +20,7 @@
       (doneItem)="checkItem($event)"
       (removeItem)="removeItem($event)"
     ></app-todo-list-item>
-    <p *ngIf="toDoList.length < 1">Have no tasks</p>
+    <p class="todo-list__msgs" *ngIf="toDoList.length < 1">Have no tasks</p>
   </body>
 </section>
 

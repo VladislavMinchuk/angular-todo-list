@@ -17,3 +17,15 @@ $breakpoints: (
   padding: 0 15px;
   margin: 0 auto;
 }
+
+body, html {
+  height: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
