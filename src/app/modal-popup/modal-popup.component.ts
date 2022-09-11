@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-popup',
@@ -9,6 +9,9 @@ export class ModalPopupComponent implements OnInit {
   @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
     this.close();
   }
+
+  @Output() onClose = new EventEmitter();
+  @Output() onOpen = new EventEmitter();
 
   @Input() title: string = '';
 
@@ -21,10 +24,12 @@ export class ModalPopupComponent implements OnInit {
 
   public close() {
     this.isOpen = false;
+    this.onClose.emit('onClose');
   }
-
+  
   public open() {
     this.isOpen = true;
+    this.onOpen.emit('onOpen');
   }
 
 }

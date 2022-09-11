@@ -1,4 +1,4 @@
-<div class="modal-popup" [class.active]="isOpen">
+<div *ngIf="isOpen" class="modal-popup" [class.active]="isOpen">
   <div class="modal-popup__overlay" (click)="close()"></div>
   <div class="modal-popup__wrapper">
     <div class="modal-popup__header">

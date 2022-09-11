@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import ListItem from 'src/interfaces/ListItem';
 import TaskForm from 'src/interfaces/TaskForm';
-import { ModalPopupComponent } from '../modal-popup/modal-popup.component';
 
 @Component({
   selector: 'todo-list',
@@ -9,10 +8,10 @@ import { ModalPopupComponent } from '../modal-popup/modal-popup.component';
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent {
-  
   constructor() {}
 
-  dataObj = new Date();
+  public dataObj: Date = new Date();
+
   toDoList: ListItem[] = [{
     id: 1,
     text: 'Should create To do list app',
@@ -24,11 +23,11 @@ export class TodoListComponent {
     return this.toDoList.length;
   };
 
-  checkItem(listItem: ListItem) {
+  checkItem(listItem: ListItem): void {
     listItem.isDone = !listItem.isDone;
   }
 
-  addItem(form: TaskForm) {
+  addItem(form: TaskForm): void {
     let lastID = this.toDoList[this.toDoList.length - 1]?.id || 0;
 
     this.toDoList.push({
@@ -39,7 +38,7 @@ export class TodoListComponent {
     });
   }
 
-  removeItem(listItem: ListItem) {
+  removeItem(listItem: ListItem): void {
     this.toDoList = this.toDoList.filter(item => item.id !== listItem.id);
   }
 }

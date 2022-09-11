@@ -1,7 +1,7 @@
 <form (submit)="submitForm()">
   <div class="mb-3">
     <label for="task" class="form-label">New task</label>
-    <input type="text" autofocus name="task" id="task" class="form-control" [(ngModel)]="task"/>
+    <input #taskInput type="text" name="task" id="task" class="form-control" [(ngModel)]="task"/>
   </div>
   <div class="d-flex flex-column flex-md-row justify-content-md-between">
     <button type="button" class="btn btn-danger order-2 order-md-1" (click)="closeForm()">Close</button>

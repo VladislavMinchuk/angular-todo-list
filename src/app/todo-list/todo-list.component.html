@@ -11,7 +11,7 @@
         <strong>{{ taskCounter }}</strong> Tasks
       </div>
     </div>
-    <button type="button" class="todo-list__add-btn" (click)="modal.open()">+</button>
+    <button type="button" class="todo-list__add-btn" (click)="modal.open(); taskForm.inputFocus()">+</button>
   </header>
   <body class="todo-list__body">
     <app-todo-list-item
@@ -24,6 +24,6 @@
   </body>
 </section>
 
-<app-modal-popup #modal [title]="'New task'">
-  <app-task-form (onSubmit)="addItem($event); modal.close()" (onClose)="modal.close()"></app-task-form>
+<app-modal-popup #modal (onClose)="taskForm.inputClear()" [title]="'New task'">
+  <app-task-form #taskForm (onSubmit)="addItem($event); modal.close(); taskForm.inputClear()" (onClose)="modal.close(); taskForm.inputClear()"></app-task-form>
 </app-modal-popup>

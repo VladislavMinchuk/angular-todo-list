@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import TaskForm from 'src/interfaces/TaskForm';
 
 @Component({
@@ -10,13 +10,32 @@ export class TaskFormComponent {
   @Output() onSubmit = new EventEmitter<TaskForm>();
   @Output() onClose = new EventEmitter();
 
-  task: string = '';
+  @ViewChild('taskInput', { static: false }) 
+  public taskInput!: ElementRef;
+
+  public task: string = '';
 
   constructor() { }
 
-  submitForm () {
+  submitForm(): void {
     this.onSubmit.emit({ task: this.task });
+    this.inputClear();
   }
   
-  closeForm () { this.onClose.emit(); }
+  closeForm(): void {
+    this.onClose.emit();
+    this.inputClear();
+  }
+
+  inputFocus(): void {
+    if (this.taskInput) {
+      setTimeout(() => {
+        this.taskInput.nativeElement.focus()
+      }, 100);
+    }
+  }
+  
+  inputClear(): void {
+    this.task = '';
+  }
 }
