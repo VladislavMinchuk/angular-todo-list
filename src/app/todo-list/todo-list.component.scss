@@ -3,7 +3,7 @@
 .todo-list {
   max-width: 600px;
   margin: 0 auto;
-  border-radius: 8px;
+  border-radius: $border-radius;
   background-color: $gray-light;
   box-shadow: 5px 6px 14px -6px rgba($black, .2);
   overflow: hidden;
@@ -14,7 +14,6 @@
 
   &__header {
     position: relative;
-    border-bottom: 1px solid $gray-light3;
     display: flex;
     justify-content: space-between;
     z-index: 1;
@@ -60,5 +59,6 @@
   &__day {
     font-size: 26px;
     color: $blue;
+    font-weight: normal;
   }
 }

@@ -10,7 +10,7 @@ export class TaskFormComponent {
   @Output() onSubmit = new EventEmitter<TaskForm>();
   @Output() onClose = new EventEmitter();
 
-  @ViewChild('taskInput', { static: false }) 
+  @ViewChild('taskInput', { static: true }) 
   public taskInput!: ElementRef;
 
   public task: string = '';

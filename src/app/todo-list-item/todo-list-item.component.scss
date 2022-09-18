@@ -3,14 +3,10 @@
 
 .list-item {
   padding: 20px 10px;
-  border-bottom: 1px solid $gray-light3;
+  border-top: 1px solid $gray-light3;
   display: flex;
   align-items: center;
   color: $black-light2;
-
-  &:last-child {
-    border-bottom: none;
-  }
 
   @include media('>=desktop') {
     padding: 30px 20px;
@@ -27,7 +23,7 @@
   &__check-btn {
     background-color: transparent;
     border: 1px solid $black;
-    border-radius: 3px;
+    border-radius: $border-radius-sm;
     padding: 0;
     display: inline-block;
     vertical-align: top;
@@ -35,6 +31,7 @@
     height: 18px;
     margin-right: 10px;
     transition: all .2s;
+    flex-shrink: 0;
 
     .list-item--done & {
       background-color: $red;
@@ -74,5 +71,12 @@
 
   &__text {
     line-height: 2;
+    // text-overflow: ellipsis;
+    // overflow: hidden;
+    // white-space: nowrap;
+
+    .list-item--done & {
+      text-decoration: line-through;
+    }
   }
 }

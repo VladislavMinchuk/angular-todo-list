@@ -1,0 +1,21 @@
+@import '~src/assets/vendors/include-media';
+
+.task-form {
+  &__main {
+    margin: 0 0 14px;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn {
+      width: 40%;
+
+      @include media('>=tablet') {
+        width: 30%;
+      }
+    }
+  }
+}

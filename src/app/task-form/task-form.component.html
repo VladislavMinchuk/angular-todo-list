@@ -1,10 +1,12 @@
 <form (submit)="submitForm()">
-  <div class="mb-3">
-    <label for="task" class="form-label">New task</label>
-    <input #taskInput type="text" name="task" id="task" class="form-control" [(ngModel)]="task"/>
+  <div class="task-form__main">
+    <p>
+      <label for="task" class="form-label">New task:</label>
+    </p>
+    <input #taskInput type="text" name="task" id="task" class="default-input" [(ngModel)]="task"/>
   </div>
-  <div class="d-flex flex-column flex-md-row justify-content-md-between">
-    <button type="button" class="btn btn-danger order-2 order-md-1" (click)="closeForm()">Close</button>
-    <button type="submit" class="btn btn-success order-1 order-md-2 mb-2 mb-md-0">Add</button>
+  <div class="task-form__footer">
+    <button type="button" class="btn btn-danger" (click)="closeForm()">Close</button>
+    <button type="submit" class="btn btn-success">Add</button>
   </div>
 </form>
