@@ -1,7 +1,7 @@
 @import '~src/assets/vendors/include-media';
 
 .main-wrapper {
-  height: 100%;
+  min-height: 100%;
   padding: 40px 0;
   background: linear-gradient(200deg, rgba(124,128,251,1) 50%, rgba(251,108,108,1) 50%);
 

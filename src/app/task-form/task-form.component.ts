@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Output, HostListener } from '@angular/core';
 import TaskForm from 'src/interfaces/TaskForm';
 
 @Component({
@@ -7,17 +7,27 @@ import TaskForm from 'src/interfaces/TaskForm';
   styleUrls: ['./task-form.component.scss']
 })
 export class TaskFormComponent {
+  @HostListener('document:keydown', ['$event']) onKeydownHandler(event: KeyboardEvent) {
+    if((event.ctrlKey || event.metaKey) && event.key == 'Enter') {
+      this.submitForm();
+    }
+  }
+
   @Output() onSubmit = new EventEmitter<TaskForm>();
   @Output() onClose = new EventEmitter();
-
-  @ViewChild('taskInput', { static: true }) 
-  public taskInput!: ElementRef;
 
   public task: string = '';
 
   constructor() { }
 
+  get isDisabled(): boolean {
+    return !this.task.trim();
+  }
+
   submitForm(): void {
+    this.task = this.task.trim();
+    if (!this.task) return;
+
     this.onSubmit.emit({ task: this.task });
     this.inputClear();
   }
@@ -27,14 +37,6 @@ export class TaskFormComponent {
     this.inputClear();
   }
 
-  inputFocus(): void {
-    if (this.taskInput) {
-      setTimeout(() => {
-        this.taskInput.nativeElement.focus()
-      }, 100);
-    }
-  }
-  
   inputClear(): void {
     this.task = '';
   }

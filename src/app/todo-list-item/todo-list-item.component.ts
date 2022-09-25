@@ -11,6 +11,8 @@ export class TodoListItemComponent {
   @Output() doneItem = new EventEmitter<ListItem>();
   @Output() removeItem = new EventEmitter<ListItem>();
 
+  public MAX_LENGTH_TASK = 100;
+
   checkItem () {
     this.doneItem.emit(this.listItem);
   }

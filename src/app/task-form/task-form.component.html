@@ -3,10 +3,11 @@
     <p>
       <label for="task" class="form-label">New task:</label>
     </p>
-    <input #taskInput type="text" name="task" id="task" class="default-input" [(ngModel)]="task"/>
+    <textarea type="text" rows="4" name="task" id="task" class="default-textarea" [(ngModel)]="task">
+    </textarea>
   </div>
   <div class="task-form__footer">
     <button type="button" class="btn btn-danger" (click)="closeForm()">Close</button>
-    <button type="submit" class="btn btn-success">Add</button>
+    <button type="submit" [disabled]="isDisabled" class="btn btn-success">Add</button>
   </div>
 </form>
