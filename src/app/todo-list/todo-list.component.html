@@ -25,6 +25,6 @@
   </body>
 </section>
 
-<app-modal-popup #modal (onClose)="taskForm.inputClear()" [title]="'New task'">
+<app-modal-popup #modal (onClose)="taskForm.inputClear()" [title]="'New task'" [showCloseBtn]="false">
   <app-task-form #taskForm (onSubmit)="addItem($event); modal.close(); taskForm.inputClear()" (onClose)="modal.close(); taskForm.inputClear()"></app-task-form>
 </app-modal-popup>

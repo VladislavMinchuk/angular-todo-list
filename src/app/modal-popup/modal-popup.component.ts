@@ -14,6 +14,7 @@ export class ModalPopupComponent implements OnInit {
   @Output() onOpen = new EventEmitter();
 
   @Input() title: string = '';
+  @Input() showCloseBtn: boolean = true;
 
   public isOpen: boolean = false;
 

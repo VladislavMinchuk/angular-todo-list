@@ -56,6 +56,28 @@ p {
   border-color: $green;
 }
 
+.close-btn {
+  position: relative;
+  display: inline-flex;
+  vertical-align: top;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  font-size: 22px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background-color: $red;
+  color: $white;
+  transform: rotate(45deg);
+
+  &:after {
+    content: '+';
+    transform: translateY(-2px);
+  }
+}
+
 // Form
 @mixin input-style {
   width: 100%;

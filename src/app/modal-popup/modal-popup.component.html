@@ -1,6 +1,7 @@
 <div *ngIf="isOpen" class="modal-popup" [class.active]="isOpen">
   <div class="modal-popup__overlay" (click)="close()"></div>
   <div class="modal-popup__wrapper">
+    <button *ngIf="showCloseBtn" class="close-btn"></button>
     <div class="modal-popup__header">
       <h3 class="modal-popup__title">{{title}}</h3>
     </div>

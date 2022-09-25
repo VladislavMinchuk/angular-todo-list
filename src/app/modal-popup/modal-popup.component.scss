@@ -29,9 +29,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
+    max-height: 70%;
     background-color: $white;
     border-radius: $border-radius;
-    overflow: hidden;
+    overflow: auto;
     
     @include media('>=tablet') {
       max-width: 450px;
@@ -52,5 +53,12 @@
   &__title {
     color: $blue;
     margin: 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 1;
   }
 }
