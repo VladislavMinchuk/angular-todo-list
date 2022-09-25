@@ -16,7 +16,8 @@ export class TodoListComponent {
     id: 1,
     text: 'Should create To do list app',
     date: new Date(),
-    isDone: false
+    isDone: false,
+    isImportant: false,
   }];
 
   get taskCounter(): number {
@@ -34,11 +35,26 @@ export class TodoListComponent {
       id: ++lastID,
       text: form.task,
       date: new Date(),
-      isDone: false
+      isDone: false,
+      isImportant: false,
     });
   }
 
   removeItem(listItem: ListItem): void {
     this.toDoList = this.toDoList.filter(item => item.id !== listItem.id);
+  }
+
+  importantItem(listItem: ListItem): void {
+    listItem.isImportant = !listItem.isImportant;
+
+    this.sortByImportantItems(this.toDoList);
+  }
+
+  sortByImportantItems(list: ListItem[]): ListItem[] {
+    return list.sort((a, b) => {
+      if (a.isImportant && !b.isImportant) return -1;
+      if (a.isImportant && b.isImportant) return 0;
+      return 0;
+    })
   }
 }

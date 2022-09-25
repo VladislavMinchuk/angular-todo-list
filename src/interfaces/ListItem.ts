@@ -2,5 +2,6 @@ export default interface ListItem {
   id: number,
   text: string,
   date: Date,
-  isDone: boolean
+  isDone: boolean,
+  isImportant: boolean,
 };

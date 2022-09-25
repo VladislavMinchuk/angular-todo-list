@@ -1,13 +1,20 @@
 <div class="list-item" [class]="{'list-item--done': listItem.isDone}">
-  <button type="button" class="list-item__check-btn" (click)="checkItem()">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-150 -150 700 700"><path d="M393.401 124.425 179.603 338.208c-15.832 15.835-41.514 15.835-57.361 0L11.878 227.836c-15.838-15.835-15.838-41.52 0-57.358 15.841-15.841 41.521-15.841 57.355-.006l81.698 81.699L336.037 67.064c15.841-15.841 41.523-15.829 57.358 0 15.835 15.838 15.835 41.514.006 57.361z"/></svg>
-  </button>
-  <span class="list-item__text" [title]="listItem.text">
-    {{ listItem.text | textPreview : MAX_LENGTH_TASK }}
-    <a href="#" title="Show more" *ngIf="listItem.text.length > MAX_LENGTH_TASK" (click)="$event.preventDefault(); modal.open()">Show more</a>
-  </span>
-  <span class="list-item__date">{{ listItem.date | date : 'hh:m a' }}</span>
-  <button type="button" class="list-item__remove-btn" (click)="remove()">x</button>
+  <div class="list-item__main-wrap">
+    <button type="button" class="list-item__check-btn" (click)="checkItem()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-150 -150 700 700"><path d="M393.401 124.425 179.603 338.208c-15.832 15.835-41.514 15.835-57.361 0L11.878 227.836c-15.838-15.835-15.838-41.52 0-57.358 15.841-15.841 41.521-15.841 57.355-.006l81.698 81.699L336.037 67.064c15.841-15.841 41.523-15.829 57.358 0 15.835 15.838 15.835 41.514.006 57.361z"/></svg>
+    </button>
+    <span class="list-item__text" [title]="listItem.text">
+      <span class="list-item__text-wrap">{{ listItem.text | textPreview : MAX_LENGTH_TASK }}</span>
+      <a href="#" title="Show more" *ngIf="listItem.text.length > MAX_LENGTH_TASK" (click)="$event.preventDefault(); modal.open()">Show more</a>
+    </span>
+  </div>
+  <div class="list-item__controllers-wrap">
+    <span class="list-item__date">{{ listItem.date | date : 'hh:m a' }}</span>
+    <button type="button" class="list-item__star-btn" [class.important]="listItem.isImportant" (click)="checkImportantItem()">
+      <svg class="list-item__star-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 473.486 473.486" style="enable-background:new 0 0 473.486 473.486" xml:space="preserve"><path d="m473.486 182.079-162.871-24.127L235.904 11.23l-73.276 147.445L0 184.389l117.584 115.252-25.798 162.616 145.946-76.215 146.684 74.787-27.384-162.356z"/></svg>
+    </button>
+    <button type="button" class="list-item__remove-btn" (click)="remove()">x</button>
+  </div>
 </div>
 
 <app-modal-popup #modal [title]="'My task'">
